@@ -841,21 +841,21 @@ main(int argc, char **argv)
 	RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "%s starting up", n->get_name());
 
 	// declear_parameter
-	n->declare_parameter("~team_name", "");
-	n->declare_parameter("~robot_name", "");
-	n->declare_parameter("~robot_number", 0);
-	n->declare_parameter("~peer_address", "");
-	n->declare_parameter("~peer_public_recv_port", 0);
-	n->declare_parameter("~peer_public_send_port", 0);
+	n->declare_parameter("~team_name", "BabyTigers-R");
+	n->declare_parameter("~robot_name", "R");
+	n->declare_parameter("~robot_number", 1);
+	n->declare_parameter("~peer_address", "192.168.4.255");
+	n->declare_parameter("~peer_public_recv_port", 4444);
+	n->declare_parameter("~peer_public_send_port", 4445);
 	n->declare_parameter("~peer_public_port", 0);
-	n->declare_parameter("~peer_cyan_recv_port", 0);
-        n->declare_parameter("~peer_cyan_send_port", 0);
+	n->declare_parameter("~peer_cyan_recv_port", 4441);
+        n->declare_parameter("~peer_cyan_send_port", 4446);
         n->declare_parameter("~peer_cyan_port", 0);
-        n->declare_parameter("~peer_magenta_recv_port", 0);
-        n->declare_parameter("~peer_magenta_send_port", 0);
+        n->declare_parameter("~peer_magenta_recv_port", 4442);
+        n->declare_parameter("~peer_magenta_send_port", 4447);
         n->declare_parameter("~peer_magenta_port", 0);
-	n->declare_parameter("~crypto_key", "");
-	n->declare_parameter("~crypto_cipher", "");
+	n->declare_parameter("~crypto_key", "randomkey");
+	n->declare_parameter("~crypto_cipher", "aes-128-cbc");
 
 
 	// Parameter parsing	
