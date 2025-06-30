@@ -841,10 +841,10 @@ main(int argc, char **argv)
 	RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "%s starting up", n->get_name());
 
 	// declear_parameter
-	n->declare_parameter("~team_name", "BabyTigers-R");
+	n->declare_parameter("~team_name", "Babytigers-R");
 	n->declare_parameter("~robot_name", "R");
 	n->declare_parameter("~robot_number", 1);
-	n->declare_parameter("~peer_address", "192.168.4.255");
+	n->declare_parameter("~peer_address", "192.168.13.255");
 	n->declare_parameter("~peer_public_recv_port", 4444);
 	n->declare_parameter("~peer_public_send_port", 4445);
 	n->declare_parameter("~peer_public_port", 0);

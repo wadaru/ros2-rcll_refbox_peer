@@ -37,21 +37,23 @@ else()
 	message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
 ## Declare a C++ executable
 add_executable(refbox_peer src/ros2-rcll_refbox_peer.cpp)
 # add_dependencies(refbox_peer ${refbox_peer_EXPORTED_TARGETS})
 
 list(APPEND _LIBRARIES "rcll_msgs")
 list(APPEND Fawkes_INCLUDE_DIRS "/home/ryukoku/git/rcll-refbox/src/libs/")
+list(APPEND Fawkes_INCLUDE_DIRS "/home/ryukoku/git/rcll-refbox/src/llsf_msgs/")
 list(APPEND Fawkes_LIBRARIES "/home/ryukoku/git/rcll-refbox/lib/libllsf_protobuf_comm.so")
 list(APPEND Fawkes_LIBRARIES "/home/ryukoku/git/rcll-refbox/lib/protobuf/libllsf_msgs.so")
 list(APPEND Fawkes_LIBRARIES "/home/ryukoku/git/rcll-refbox/lib/protobuf/libllsf_log_msgs.so")
 list(APPEND Fawkes_LIBRARIES "/home/ryukoku/git/rcll-refbox/lib/libmps_comm.so")
 list(APPEND Fawkes_LIBRARIES "/usr/lib/x86_64-linux-gnu/libprotobuf.so")
 
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+  ${Fawkes_INCLUDE_DIRS}
+)
 # Use Fawkes' protobuf_comm
 set_target_properties(refbox_peer PROPERTIES
     INCLUDE_DIRECTORIES "${Fawkes_INCLUDE_DIRS};${catkin_INCLUDE_DIRS}"
@@ -62,6 +64,7 @@ set_target_properties(refbox_peer PROPERTIES
     INSTALL_RPATH_USE_LINK_PATH TRUE
     BUILD_WITH_INSTALL_RPATH TRUE)
   message("Using Fawkes protobuf_comm")
+  message("${Fawkes_INCLUDE_DIRS};${catkin_INCLUDE_DIRS}")
 
 # link library to talker
 ament_target_dependencies(refbox_peer
