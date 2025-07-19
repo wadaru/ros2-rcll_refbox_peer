@@ -592,8 +592,8 @@ srv_cb_send_beacon(const std::shared_ptr<refbox_msgs::srv::SendBeaconSignal::Req
 			b.mutable_pose()->set_y(req->pose.pose.position.y);
 			tf2::Quaternion q(req->pose.pose.orientation.x, req->pose.pose.orientation.y,
 			                  req->pose.pose.orientation.z, req->pose.pose.orientation.w);
-			// b.mutable_pose()->set_ori(tf2::getYaw(q) / 3.14159 * 180.0 * -1.0 - 90.0);
-			b.mutable_pose()->set_ori(tf2::getYaw(q)); // / 180.0 * 3.14159);
+			b.mutable_pose()->set_ori(tf2::getYaw(q) / 3.14159 * 180.0 * -1.0 - 90.0);
+			// b.mutable_pose()->set_ori(tf2::getYaw(q)); // / 180.0 * 3.14159);
 		}
 	}
 
@@ -837,7 +837,7 @@ main(int argc, char **argv)
 	rclcpp::init(argc, argv);
 
 	// rclcpp::NodeHandle n;
-	rclcpp::Node::SharedPtr n = rclcpp::Node::make_shared("rcll_refbox_perr");
+	rclcpp::Node::SharedPtr n = rclcpp::Node::make_shared("rcll_refbox_peer");
 
 	RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "%s starting up", n->get_name());
 
