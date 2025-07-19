@@ -592,7 +592,8 @@ srv_cb_send_beacon(const std::shared_ptr<refbox_msgs::srv::SendBeaconSignal::Req
 			b.mutable_pose()->set_y(req->pose.pose.position.y);
 			tf2::Quaternion q(req->pose.pose.orientation.x, req->pose.pose.orientation.y,
 			                  req->pose.pose.orientation.z, req->pose.pose.orientation.w);
-			b.mutable_pose()->set_ori(tf2::getYaw(q) / 3.14159 * 180.0 * -1.0 - 90.0);
+			// b.mutable_pose()->set_ori(tf2::getYaw(q) / 3.14159 * 180.0 * -1.0 - 90.0);
+			b.mutable_pose()->set_ori(tf2::getYaw(q)); // / 180.0 * 3.14159);
 		}
 	}
 
@@ -844,7 +845,7 @@ main(int argc, char **argv)
 	n->declare_parameter("~team_name", "Babytigers-R");
 	n->declare_parameter("~robot_name", "R");
 	n->declare_parameter("~robot_number", 1);
-	n->declare_parameter("~peer_address", "192.168.13.255");
+	n->declare_parameter("~peer_address", "10.42.0.255");
 	n->declare_parameter("~peer_public_recv_port", 4444);
 	n->declare_parameter("~peer_public_send_port", 4445);
 	n->declare_parameter("~peer_public_port", 0);
